@@ -74,14 +74,14 @@
         .desktop-nav a { color: var(--text-light); text-decoration: none; font-family: 'Outfit', sans-serif; font-size: 0.95rem; transition: 0.3s; }
         .desktop-nav a:hover { color: var(--yellow); }
 
-        /* Mobile Hamburger Button (Hidden on Desktop) */
+        /* Mobile Hamburger Button */
         .menu-btn { 
             background: none; border: 1px solid var(--border-color); color: var(--yellow); width: 40px; height: 40px; 
             border-radius: 50%; font-size: 1.1rem; cursor: pointer; transition: 0.3s; display: none; align-items: center; justify-content: center; z-index: 1001;
         }
         .menu-btn:hover { background: rgba(255, 215, 0, 0.1); border-color: var(--yellow); }
 
-        /* Popup Hamburger Menu for Mobile Only */
+        /* Popup Hamburger Menu */
         .menu-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px);
@@ -94,10 +94,7 @@
             width: 100%; max-width: 380px; padding: 35px 25px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             animation: popUpCard 0.3s ease-in-out;
         }
-        @keyframes popUpCard {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+        @keyframes popUpCard { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         .menu-close {
             position: absolute; top: 15px; right: 15px; background: none; border: 1px solid var(--border-color);
             color: #fff; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 0.9rem;
@@ -107,21 +104,16 @@
         
         .menu-links { list-style: none; margin: 15px 0 25px; }
         .menu-links li { margin: 12px 0; }
-        .menu-links a {
-            font-size: 1.4rem; font-family: 'Outfit', sans-serif; color: var(--text-light); text-decoration: none; transition: 0.3s;
-        }
+        .menu-links a { font-size: 1.4rem; font-family: 'Outfit', sans-serif; color: var(--text-light); text-decoration: none; transition: 0.3s; }
         .menu-links a:hover { color: var(--yellow); padding-left: 8px; }
 
         .menu-footer-row { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 15px; }
         .menu-socials { display: flex; gap: 12px; }
         .menu-socials a { color: var(--text-dim); font-size: 1.1rem; transition: 0.3s; text-decoration: none; }
         .menu-socials a:hover { color: var(--yellow); }
-        .menu-discord-btn {
-            background: var(--yellow); color: var(--bg-dark); padding: 8px 16px; border-radius: 30px;
-            font-weight: 700; font-size: 0.8rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
-        }
+        .menu-discord-btn { background: var(--yellow); color: var(--bg-dark); padding: 8px 16px; border-radius: 30px; font-weight: 700; font-size: 0.8rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
 
-        /* Hero Section & About (Balanced Font Sizes) */
+        /* Hero Section */
         .hero { padding: 50px 0 70px; border-bottom: 1px solid var(--border-color); }
         .hero-tag { font-size: 0.75rem; color: var(--yellow); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; display: block; font-weight: 600; }
         .hero h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
@@ -129,10 +121,7 @@
 
         .about-section { padding: 70px 0; border-bottom: 1px solid var(--border-color); }
         .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; }
-        .about-img-box {
-            width: 100%; height: 320px; border-radius: 14px; overflow: hidden; border: 1px solid var(--border-color);
-            background: #111; position: relative;
-        }
+        .about-img-box { width: 100%; height: 320px; border-radius: 14px; overflow: hidden; border: 1px solid var(--border-color); background: #111; position: relative; }
         .about-img-box img { width: 100%; height: 100%; object-fit: cover; }
         .about-text h3 { font-size: 2rem; margin-bottom: 15px; }
         .about-text p { color: var(--text-dim); line-height: 1.7; margin-bottom: 15px; font-size: 0.95rem; font-weight: 300; }
@@ -165,36 +154,44 @@
         
         .project-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; border: 1px solid #222; }
         .project-card h4 { font-size: 1.4rem; margin-bottom: 10px; color: var(--yellow); }
-        .project-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px; font-weight: 300; }
+        
+        /* See More Logic CSS */
+        .desc-text {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            font-weight: 300;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Limits text to 3 lines initially */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .desc-text.expanded { -webkit-line-clamp: unset; }
+        .see-more-btn {
+            color: var(--yellow); font-size: 0.85rem; font-weight: 600; cursor: pointer;
+            margin-bottom: 20px; display: inline-block; transition: 0.2s;
+        }
+        .see-more-btn:hover { opacity: 0.8; text-decoration: underline; }
+
         .project-btn { 
             display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); color: var(--bg-dark); 
             padding: 10px 20px; text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 0.85rem; transition: 0.3s; 
+            margin-top: 5px;
         }
         .project-btn:hover { opacity: 0.85; transform: scale(1.03); }
 
         /* Giant Half-Overflowing Rotating Circle Separator */
         .separator-container {
-            width: 100%;
-            height: 160px;
-            position: relative;
-            overflow: hidden; /* hides the portion that goes outside the left edge */
-            display: flex;
-            align-items: center;
+            width: 100%; height: 160px; position: relative; overflow: hidden; display: flex; align-items: center;
         }
         .giant-rotating-circle {
-            position: absolute;
-            left: -140px; /* Half inside, half hidden outside on the left */
-            width: 320px;
-            height: 320px;
-            border: 1px dashed rgba(255, 215, 0, 0.2);
-            border-radius: 50%;
-            animation: slowSpin 30s linear infinite;
-            pointer-events: none;
+            position: absolute; left: -140px; width: 320px; height: 320px;
+            border: 1px dashed rgba(255, 215, 0, 0.2); border-radius: 50%;
+            animation: slowSpin 30s linear infinite; pointer-events: none;
         }
-        @keyframes slowSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes slowSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* Infinite Smooth Reviews Ticker */
         .reviews-section { padding: 60px 0; border-bottom: 1px solid var(--border-color); overflow: hidden; }
@@ -210,20 +207,14 @@
             animation: scrollMarquee 35s linear infinite;
         }
         .marquee-track:hover { animation-play-state: paused; }
-        @keyframes scrollMarquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+        @keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         .review-card {
             width: 310px; background: var(--bg-card); border: 1px solid var(--border-color);
             border-radius: 14px; padding: 25px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between;
             position: relative;
         }
-        .review-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 10px; height: 10px;
-            border-top: 2px solid var(--yellow); border-left: 2px solid var(--yellow); border-top-left-radius: 14px;
-        }
+        .review-card::before { content: ''; position: absolute; top: 0; left: 0; width: 10px; height: 10px; border-top: 2px solid var(--yellow); border-left: 2px solid var(--yellow); border-top-left-radius: 14px; }
         .review-user { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
         .review-user img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--yellow); }
         .review-user h5 { font-size: 1rem; font-family: 'Outfit', sans-serif; }
@@ -234,14 +225,8 @@
         /* Discord Community Section */
         .community-section { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
         .server-wrapper { background: var(--bg-card); padding: 40px; border-radius: 14px; border: 1px solid var(--border-color); position: relative; }
-        .server-wrapper::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 15px; height: 15px;
-            border-top: 2px solid var(--yellow); border-left: 2px solid var(--yellow); border-top-left-radius: 14px;
-        }
-        .server-wrapper::after {
-            content: ''; position: absolute; bottom: 0; right: 0; width: 15px; height: 15px;
-            border-bottom: 2px solid var(--yellow); border-right: 2px solid var(--yellow); border-bottom-right-radius: 14px;
-        }
+        .server-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 15px; height: 15px; border-top: 2px solid var(--yellow); border-left: 2px solid var(--yellow); border-top-left-radius: 14px; }
+        .server-wrapper::after { content: ''; position: absolute; bottom: 0; right: 0; width: 15px; height: 15px; border-bottom: 2px solid var(--yellow); border-right: 2px solid var(--yellow); border-bottom-right-radius: 14px; }
         .server-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
         .server-logo { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--yellow); object-fit: cover; flex-shrink: 0; }
         .server-title h2 { font-size: 1.8rem; word-break: break-word; overflow-wrap: break-word; }
@@ -252,24 +237,16 @@
         .stat-box h3 { font-size: 3.2rem; color: var(--yellow); line-height: 1; font-family: 'Outfit', sans-serif; }
         .stat-box h3.white-num { color: var(--text-light); }
 
-        .btn-primary {
-            display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); color: var(--bg-dark);
-            padding: 12px 25px; text-decoration: none; border-radius: 30px; font-weight: 700; font-size: 0.9rem;
-            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
-        }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); color: var(--bg-dark); padding: 12px 25px; text-decoration: none; border-radius: 30px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .btn-primary:hover { opacity: 0.85; transform: scale(1.02); }
 
         /* Huge Footer */
-        footer {
-            padding: 80px 0 40px;
-            background: #0d0d0d;
-        }
+        footer { padding: 80px 0 40px; background: #0d0d0d; }
         .footer-content { display: flex; flex-direction: column; gap: 25px; align-items: center; text-align: center; }
         .footer-brand { font-size: 2.8rem; font-family: 'Outfit', sans-serif; color: var(--yellow); }
         .contact-email { font-size: 1.1rem; color: var(--text-light); background: rgba(255,215,0,0.05); padding: 12px 24px; border-radius: 30px; border: 1px solid rgba(255,215,0,0.2); text-decoration: none; transition: 0.3s; }
         .contact-email:hover { background: rgba(255,215,0,0.15); border-color: var(--yellow); }
         
-        /* Real Tech Colors */
         .tech-icons { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin: 20px 0; font-size: 2.2rem; }
         .tech-icons .fa-html5 { color: #e34c26; }
         .tech-icons .fa-css3-alt { color: #264de4; }
@@ -280,26 +257,13 @@
         .tech-icons .fa-discord { color: #5865F2; }
 
         .social-links { display: flex; gap: 15px; margin: 15px 0; }
-        .social-links a {
-            width: 50px; height: 50px; border: 1px solid var(--border-color); border-radius: 50%;
-            display: flex; justify-content: center; align-items: center; color: var(--text-light);
-            text-decoration: none; font-size: 1.2rem; transition: 0.3s; background: var(--bg-dark);
-        }
+        .social-links a { width: 50px; height: 50px; border: 1px solid var(--border-color); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: var(--text-light); text-decoration: none; font-size: 1.2rem; transition: 0.3s; background: var(--bg-dark); }
         .social-links a:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-3px); }
 
-        .footer-bottom {
-            margin-top: 60px; width: 100%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center;
-            color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; padding: 0 20px;
-            border-top: 1px solid #1a1a1a; padding-top: 25px;
-        }
-        .scroll-top {
-            width: 45px; height: 45px; background: var(--yellow); color: var(--bg-dark);
-            border: none; border-radius: 50%; font-size: 1.1rem; cursor: pointer;
-            display: flex; justify-content: center; align-items: center; transition: 0.3s;
-        }
+        .footer-bottom { margin-top: 60px; width: 100%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; padding: 0 20px; border-top: 1px solid #1a1a1a; padding-top: 25px; }
+        .scroll-top { width: 45px; height: 45px; background: var(--yellow); color: var(--bg-dark); border: none; border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.3s; }
         .scroll-top:hover { transform: translateY(-3px); }
 
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .desktop-nav { display: none !important; }
             .menu-btn { display: flex !important; }
@@ -316,14 +280,10 @@
 </head>
 <body>
 
-    <!-- Background Particles -->
     <canvas id="particles"></canvas>
 
-    <!-- Header & Desktop Nav / Mobile Hamburger Toggle -->
     <header>
         <a href="#" class="logo-text">HASAN HRIDOY</a>
-        
-        <!-- Desktop Menu Links (Visible only on Desktop, No Hamburger) -->
         <nav class="desktop-nav">
             <a href="#">Home</a>
             <a href="#projects">Projects</a>
@@ -331,12 +291,9 @@
             <a href="#community">Community</a>
             <a href="#contact">Contact</a>
         </nav>
-
-        <!-- Mobile Hamburger Button (Visible only on Mobile) -->
         <button class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
     </header>
 
-    <!-- Popup Hamburger Menu for Mobile Only -->
     <div class="menu-overlay" id="menuOverlay">
         <div class="menu-card">
             <button class="menu-close" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button>
@@ -358,7 +315,6 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
     <div class="container">
         <section class="hero">
             <span class="hero-tag">- FULL-STACK DEVELOPER & CREATOR</span>
@@ -366,11 +322,9 @@
             <p>Welcome to my professional space. Built with modern web technologies, dynamic live database integration, and high-performance server architectures.</p>
         </section>
 
-        <!-- About Section -->
         <section class="about-section" id="about">
             <div class="about-grid">
                 <div class="about-img-box">
-                    <!-- Transparent PNG বা প্রফেশনাল ছবি এখানে লিংক দিবি -->
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600" alt="Hasan Hridoy">
                 </div>
                 <div class="about-text">
@@ -383,7 +337,6 @@
         </section>
     </div>
 
-    <!-- Dynamic Projects Section (No Database Label) -->
     <div class="container" id="projects">
         <section class="projects-section">
             <span class="hero-tag">- MY WORK</span>
@@ -394,64 +347,46 @@
         </section>
     </div>
 
-    <!-- Giant Half-Overflowing Rotating Circle Separator -->
     <div class="separator-container">
         <div class="giant-rotating-circle"></div>
     </div>
 
-    <!-- Infinite Smooth Reviews Ticker -->
     <section class="reviews-section" id="reviews">
         <span class="hero-tag" style="text-align: center;">- CLIENT TESTIMONIALS</span>
         <h2>Loved by 50+ Bangladeshi Clients & Peers</h2>
-        
         <div class="marquee-container">
             <div class="marquee-track" id="marqueeTrack">
                 <div class="review-card">
                     <div>
-                        <div class="review-user">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Tanvir">
-                            <div><h5>Tanvir Ahmed</h5><span>Dhaka</span></div>
-                        </div>
+                        <div class="review-user"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Tanvir"><div><h5>Tanvir Ahmed</h5><span>Dhaka</span></div></div>
                         <p>"Hasan Hridoy did an incredible job with our web project. The database integration and clean UI blew our minds!"</p>
                     </div>
                     <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                 </div>
                 <div class="review-card">
                     <div>
-                        <div class="review-user">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="Rahim">
-                            <div><h5>Rahim Uddin</h5><span>Chittagong</span></div>
-                        </div>
+                        <div class="review-user"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="Rahim"><div><h5>Rahim Uddin</h5><span>Chittagong</span></div></div>
                         <p>"Super fast delivery and absolute perfection in design. The responsive layout is amazingly smooth on mobile."</p>
                     </div>
                     <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                 </div>
                 <div class="review-card">
                     <div>
-                        <div class="review-user">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="Nusrat">
-                            <div><h5>Nusrat Jahan</h5><span>Sylhet</span></div>
-                        </div>
+                        <div class="review-user"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="Nusrat"><div><h5>Nusrat Jahan</h5><span>Sylhet</span></div></div>
                         <p>"One of the best developer experiences in Bangladesh. Very professional and creative with the backend setups."</p>
                     </div>
                     <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                 </div>
                 <div class="review-card">
                     <div>
-                        <div class="review-user">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="Sakib">
-                            <div><h5>Sakib Al Hasan</h5><span>Rajshahi</span></div>
-                        </div>
+                        <div class="review-user"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="Sakib"><div><h5>Sakib Al Hasan</h5><span>Rajshahi</span></div></div>
                         <p>"The dynamic sheet connection works flawlessly. Clean code and great support throughout!"</p>
                     </div>
                     <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                 </div>
                 <div class="review-card">
                     <div>
-                        <div class="review-user">
-                            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100" alt="Mehedi">
-                            <div><h5>Mehedi Hasan</h5><span>Khulna</span></div>
-                        </div>
+                        <div class="review-user"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100" alt="Mehedi"><div><h5>Mehedi Hasan</h5><span>Khulna</span></div></div>
                         <p>"Mind-blowing background animations and Discord sync features. Highly recommended!"</p>
                     </div>
                     <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
@@ -460,250 +395,183 @@
         </div>
     </section>
 
-    <!-- Discord Communities Section -->
     <div class="container" id="community">
         <section class="community-section">
             <span class="hero-tag">- LIVE NETWORKS</span>
-            
-            <!-- Main Server (Live Sync) -->
             <div class="server-wrapper bracket-card">
                 <div class="server-header">
                     <img id="main-server-logo" src="https://via.placeholder.com/70" class="server-logo" alt="Server Logo">
-                    <div class="server-title">
-                        <h2 id="main-server-name">Main Community</h2>
-                    </div>
+                    <div class="server-title"><h2 id="main-server-name">Main Community</h2></div>
                 </div>
-                
                 <div class="stats-grid">
-                    <div class="stat-box">
-                        <p>Online Active</p>
-                        <h3 id="online-count">1</h3> 
-                    </div>
-                    <div class="stat-box">
-                        <p style="color:var(--text-dim);">Total Members</p>
-                        <h3 class="white-num" id="total-count">1</h3>
-                    </div>
+                    <div class="stat-box"><p>Online Active</p><h3 id="online-count">1</h3></div>
+                    <div class="stat-box"><p style="color:var(--text-dim);">Total Members</p><h3 class="white-num" id="total-count">1</h3></div>
                 </div>
-
-                <a href="https://discord.gg/KZZPua7DE2" target="_blank" class="btn-primary">
-                    JOIN DISCORD <i class="fa-brands fa-discord"></i>
-                </a>
+                <a href="https://discord.gg/KZZPua7DE2" target="_blank" class="btn-primary">JOIN DISCORD <i class="fa-brands fa-discord"></i></a>
             </div>
         </section>
     </div>
 
-    <!-- Huge Footer -->
     <footer id="contact">
         <div class="container footer-content">
             <div class="footer-brand">HASAN HRIDOY</div>
             <p style="color: var(--text-dim); max-width: 480px; line-height: 1.7; font-size: 0.95rem;">
                 Let's collaborate on your next big idea. Reach out directly via email or connect through my official social channels below.
             </p>
-            
-            <a href="mailto:hasanhridoycollab@gmail.com" class="contact-email">
-                <i class="fa-solid fa-envelope" style="color: var(--yellow); margin-right: 8px;"></i> hasanhridoycollab@gmail.com
-            </a>
-
-            <!-- Real Tech Stack Colors -->
+            <a href="mailto:hasanhridoycollab@gmail.com" class="contact-email"><i class="fa-solid fa-envelope" style="color: var(--yellow); margin-right: 8px;"></i> hasanhridoycollab@gmail.com</a>
             <div class="tech-icons">
-                <i class="fa-brands fa-html5" title="HTML5"></i>
-                <i class="fa-brands fa-css3-alt" title="CSS3"></i>
-                <i class="fa-brands fa-js" title="JavaScript"></i>
-                <i class="devicon-typescript-plain" title="TypeScript"></i>
-                <i class="devicon-cplusplus-plain" title="C++"></i>
-                <i class="devicon-nodejs-plain" title="Node.js"></i>
-                <i class="fa-brands fa-discord" title="Discord.js"></i>
+                <i class="fa-brands fa-html5" title="HTML5"></i><i class="fa-brands fa-css3-alt" title="CSS3"></i><i class="fa-brands fa-js" title="JavaScript"></i><i class="devicon-typescript-plain" title="TypeScript"></i><i class="devicon-cplusplus-plain" title="C++"></i><i class="devicon-nodejs-plain" title="Node.js"></i><i class="fa-brands fa-discord" title="Discord.js"></i>
             </div>
-
-            <!-- Social Links -->
             <div class="social-links">
                 <a href="https://discord.gg/KZZPua7DE2" target="_blank" title="Discord"><i class="fa-brands fa-discord"></i></a>
                 <a href="https://instagram.com/YOUR_ID" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://youtube.com/@YOUR_CHANNEL" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
-
         <div class="container" style="padding: 0 1.5rem;">
             <div class="footer-bottom">
-                <div>
-                    © 2026 HASAN HRIDOY. ALL RIGHTS RESERVED.
-                </div>
-                <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to Top">
-                    <i class="fa-solid fa-arrow-up"></i>
-                </button>
+                <div>© 2026 HASAN HRIDOY. ALL RIGHTS RESERVED.</div>
+                <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></button>
             </div>
         </div>
     </footer>
 
     <script>
-        /* ========================================================
-           1. HAMBURGER MENU TOGGLE (Mobile Only)
-           ======================================================== */
-        function toggleMenu() {
-            document.getElementById('menuOverlay').classList.toggle('active');
-        }
+        // 1. Hamburger Toggle
+        function toggleMenu() { document.getElementById('menuOverlay').classList.toggle('active'); }
 
-        /* ========================================================
-           2. BACKGROUND PARTICLES ANIMATION
-           ======================================================== */
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
+        // 2. Background Particles
+        const canvas = document.getElementById('particles'); const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth; let height = canvas.height = window.innerHeight;
         const dots = [];
-
-        for(let i = 0; i < 45; i++) {
-            dots.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                vx: (Math.random() - 0.5) * 0.4,
-                vy: (Math.random() - 0.5) * 0.4,
-                radius: Math.random() * 1.5
-            });
-        }
-
+        for(let i = 0; i < 45; i++) dots.push({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, radius: Math.random() * 1.5 });
         function drawDots() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = 'rgba(255, 215, 0, 0.4)'; 
+            ctx.clearRect(0, 0, width, height); ctx.fillStyle = 'rgba(255, 215, 0, 0.4)'; 
             dots.forEach(dot => {
-                dot.x += dot.vx;
-                dot.y += dot.vy;
-                if(dot.x < 0 || dot.x > width) dot.vx *= -1;
-                if(dot.y < 0 || dot.y > height) dot.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            requestAnimationFrame(drawDots);
-        }
-        drawDots();
+                dot.x += dot.vx; dot.y += dot.vy;
+                if(dot.x < 0 || dot.x > width) dot.vx *= -1; if(dot.y < 0 || dot.y > height) dot.vy *= -1;
+                ctx.beginPath(); ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2); ctx.fill();
+            }); requestAnimationFrame(drawDots);
+        } drawDots();
 
-        /* ========================================================
-           3. GOOGLE SHEETS CSV DATA FETCHING (Projects)
-           ======================================================== */
+        // 3. ADVANCED CSV PARSER (Fixes multi-line description bug)
+        function csvToArray(text) {
+            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
+            for (let l of text) {
+                if ('"' === l) {
+                    if (s && l === p) row[i] += l;
+                    s = !s;
+                } else if (',' === l && s) l = row[++i] = '';
+                else if ('\n' === l && s) {
+                    if ('\r' === p) row[i] = row[i].slice(0, -1);
+                    row = ret[++r] = [l = '']; i = 0;
+                } else row[i] += l;
+                p = l;
+            }
+            return ret;
+        }
+
+        // 4. See More / See Less logic
+        function toggleDesc(btn) {
+            const desc = btn.previousElementSibling;
+            if (desc.classList.contains('expanded')) {
+                desc.classList.remove('expanded');
+                btn.innerText = 'See More';
+            } else {
+                desc.classList.add('expanded');
+                btn.innerText = 'See Less';
+            }
+        }
+
         const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1wyJFeCBqOpczOVgx_pghVNJBp1PX4bYv0lRrCYPrVXk/export?format=csv'; 
         
         async function loadProjects() {
             try {
                 const response = await fetch(SHEET_CSV_URL);
                 const data = await response.text();
-                const rows = data.split('\n').slice(1); 
+                // Using the advanced parser now instead of simple split
+                const rows = csvToArray(data).slice(1); 
                 
                 const container = document.getElementById('project-container');
                 container.innerHTML = '';
                 
-                rows.forEach((row) => {
-                    const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                rows.forEach((columns) => {
                     if(columns.length >= 3) {
-                        const name = columns[0] ? columns[0].replace(/"/g, '').trim() : '';
-                        const photoUrl = columns[1] ? columns[1].replace(/"/g, '').trim() : '';
-                        const link = columns[2] ? columns[2].replace(/"/g, '').trim() : '';
-                        const desc = columns[3] ? columns[3].replace(/"/g, '').trim() : 'Explore this amazing project built with cutting-edge web technologies.';
+                        const name = columns[0] ? columns[0].trim() : '';
+                        const photoUrl = columns[1] ? columns[1].trim() : '';
+                        const link = columns[2] ? columns[2].trim() : '';
+                        const desc = columns[3] ? columns[3].trim() : '';
                         
                         if(name && photoUrl && link) {
+                            // Converts newlines to actual line breaks
+                            const formattedDesc = desc.replace(/\n/g, '<br>');
+                            // Only show See More button if text is long
+                            const seeMoreHtml = desc.length > 100 ? `<span class="see-more-btn" onclick="event.stopPropagation(); toggleDesc(this)">See More</span>` : ``;
+
                             container.innerHTML += `
                                 <div class="bracket-card project-card" onclick="shiftCard(this)">
-                                    <img src="${photoUrl}" class="project-img" alt="${name}">
+                                    <img src="${photoUrl}" class="project-img" alt="${name}" onerror="this.src='https://via.placeholder.com/400x300?text=Image'">
                                     <h4>${name}</h4>
-                                    <p>${desc}</p>
-                                    <a href="${link}" target="_blank" class="project-btn">VIEW PROJECT <i class="fa-solid fa-arrow-right"></i></a>
+                                    <div>
+                                        <p class="desc-text">${formattedDesc}</p>
+                                        ${seeMoreHtml}
+                                    </div>
+                                    <a href="${link}" target="_blank" class="project-btn" onclick="event.stopPropagation();">VIEW PROJECT <i class="fa-solid fa-arrow-right"></i></a>
                                 </div>
                             `;
                         }
                     }
                 });
             } catch (error) {
-                document.getElementById('project-container').innerHTML = `
-                    <div class="bracket-card project-card" onclick="shiftCard(this)">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600" class="project-img" alt="Sample">
-                        <h4>Full-Stack Dashboard</h4>
-                        <p>A comprehensive web dashboard built for analytics and server monitoring.</p>
-                        <a href="#" target="_blank" class="project-btn">VIEW PROJECT <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                `;
+                console.error(error);
+                document.getElementById('project-container').innerHTML = `<p style="color: var(--text-dim);">Unable to load projects right now.</p>`;
             }
         }
         loadProjects();
 
-        /* ========================================================
-           4. PROJECT CARD CLICK SHIFT ANIMATION (Right & Left)
-           ======================================================== */
+        // 5. Shift Animation
         function shiftCard(card) {
-            if(card.classList.contains('shift-right')) {
-                card.classList.remove('shift-right');
-                card.classList.add('shift-left');
-            } else if(card.classList.contains('shift-left')) {
-                card.classList.remove('shift-left');
-            } else {
-                card.classList.add('shift-right');
-            }
+            if(card.classList.contains('shift-right')) { card.classList.remove('shift-right'); card.classList.add('shift-left'); }
+            else if(card.classList.contains('shift-left')) { card.classList.remove('shift-left'); }
+            else { card.classList.add('shift-right'); }
         }
 
-        /* ========================================================
-           5. INFINITE REVIEWS LOOP DUPLICATION
-           ======================================================== */
-        const track = document.getElementById('marqueeTrack');
-        track.innerHTML += track.innerHTML;
+        // 6. Infinite Reviews
+        const track = document.getElementById('marqueeTrack'); track.innerHTML += track.innerHTML;
 
-        /* ========================================================
-           6. DISCORD LIVE STATS AUTO-SYNC (KZZPua7DE2)
-           ======================================================== */
+        // 7. Discord Live Stats (KZZPua7DE2)
         const DISCORD_INVITE_CODE = 'KZZPua7DE2'; 
-        let lastOnline = 1;
-        let lastTotal = 1;
+        let lastOnline = 1; let lastTotal = 1;
 
         function animateValue(id, start, end, duration) {
-            if (start === end) return;
-            const obj = document.getElementById(id);
-            let startTimestamp = null;
+            if (start === end) return; const obj = document.getElementById(id); let startTimestamp = null;
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const easeProgress = progress * (2 - progress);
-                const currentVal = Math.floor(easeProgress * (end - start) + start);
+                const currentVal = Math.floor(progress * (2 - progress) * (end - start) + start);
                 obj.innerText = currentVal.toLocaleString();
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                    obj.innerText = end.toLocaleString();
-                }
-            };
-            window.requestAnimationFrame(step);
+                if (progress < 1) window.requestAnimationFrame(step); else obj.innerText = end.toLocaleString();
+            }; window.requestAnimationFrame(step);
         }
 
         async function syncDiscordStats(initialLoad = false) {
             try {
                 const response = await fetch(`https://discord.com/api/v9/invites/${DISCORD_INVITE_CODE}?with_counts=true`);
                 const data = await response.json();
-
                 if(data.guild) {
                     document.getElementById('main-server-name').innerText = data.guild.name;
-                    if(data.guild.icon) {
-                        document.getElementById('main-server-logo').src = `https://cdn.discordapp.com/icons/${data.guild.id}/${data.guild.icon}.png`;
-                    }
+                    if(data.guild.icon) document.getElementById('main-server-logo').src = `https://cdn.discordapp.com/icons/${data.guild.id}/${data.guild.icon}.png`;
                 }
-                
-                const currentOnline = data.approximate_presence_count || 1;
-                const currentTotal = data.approximate_member_count || 1;
-
-                if(initialLoad) {
-                    animateValue("online-count", 1, currentOnline, 2500);
-                    animateValue("total-count", 1, currentTotal, 2500);
-                } else {
+                const currentOnline = data.approximate_presence_count || 1; const currentTotal = data.approximate_member_count || 1;
+                if(initialLoad) { animateValue("online-count", 1, currentOnline, 2500); animateValue("total-count", 1, currentTotal, 2500); }
+                else {
                     if (lastOnline !== currentOnline) document.getElementById('online-count').innerText = currentOnline.toLocaleString();
                     if (lastTotal !== currentTotal) document.getElementById('total-count').innerText = currentTotal.toLocaleString();
                 }
-
-                lastOnline = currentOnline;
-                lastTotal = currentTotal;
-
-            } catch (err) {
-                console.log("Discord API fetch error:", err);
-            }
+                lastOnline = currentOnline; lastTotal = currentTotal;
+            } catch (err) { console.log(err); }
         }
-
-        syncDiscordStats(true);
-        setInterval(() => syncDiscordStats(false), 10000);
+        syncDiscordStats(true); setInterval(() => syncDiscordStats(false), 10000);
     </script>
 </body>
     </html>
