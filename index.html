@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Meta Tags for Embeds -->
+    <!-- Meta Tags -->
     <meta property="og:title" content="HASAN HRIDOY | Portfolio">
     <meta property="og:description" content="Explore projects, skills, client reviews, and active communities of Hasan Hridoy.">
     <meta property="og:image" content="https://your-image-link-here.com/photo.png">
@@ -18,9 +18,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <!-- Clean, Modern & Professional Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- PapaParse for flawless Google Sheets CSV fetching -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
     <style>
         :root {
@@ -46,22 +43,15 @@
         h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 600; }
         .highlight { color: var(--yellow); font-style: italic; }
 
-        /* Animated Glowing Blobs in Background */
-        .blob { position: fixed; border-radius: 50%; filter: blur(100px); opacity: 0.15; z-index: -2; pointer-events: none; animation: floatBlob 20s infinite alternate ease-in-out; }
-        .blob-1 { top: 10%; left: 10%; width: 300px; height: 300px; background: var(--yellow); }
-        .blob-2 { bottom: 10%; right: 10%; width: 400px; height: 400px; background: #ffaa00; animation-delay: -10s; }
-        @keyframes floatBlob { 100% { transform: translate(50px, 50px) scale(1.2); } }
-
-        /* Background Dots Animation */
-        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        /* Background Dots Animation (Clean, No Glowing Blobs) */
+        #particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;
+        }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
 
         /* INITIAL LOAD ANIMATIONS (Bottom to Top Fade In) */
-        .animate-up {
-            opacity: 0; transform: translateY(40px);
-            animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-        }
+        .animate-up { opacity: 0; transform: translateY(40px); animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
@@ -81,7 +71,7 @@
         .menu-btn { background: none; border: 1px solid var(--border-color); color: var(--yellow); width: 40px; height: 40px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; transition: 0.3s; display: none; align-items: center; justify-content: center; z-index: 1001; }
         .menu-btn:hover { background: rgba(255, 215, 0, 0.1); border-color: var(--yellow); }
 
-        /* Popup Hamburger Menu */
+        /* Popup Hamburger Menu (Mobile) */
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 2000; display: none; justify-content: center; align-items: center; padding: 20px; }
         .menu-overlay.active { display: flex; }
         .menu-card { background: #141414; border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 16px; width: 100%; max-width: 380px; padding: 35px 25px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.8); animation: popUpCard 0.3s ease-in-out; }
@@ -112,7 +102,7 @@
         .about-text h3 { font-size: 2.2rem; margin-bottom: 15px; }
         .about-text p { color: var(--text-dim); line-height: 1.7; margin-bottom: 15px; font-size: 1rem; font-weight: 300; }
 
-        /* Bracket Card Style */
+        /* Bracket Card Style for Projects */
         .bracket-card { position: relative; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 25px; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s; cursor: pointer; }
         .bracket-card::before { content: ''; position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-top: 2px solid var(--yellow); border-left: 2px solid var(--yellow); border-top-left-radius: 14px; }
         .bracket-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-bottom: 2px solid var(--yellow); border-right: 2px solid var(--yellow); border-bottom-right-radius: 14px; }
@@ -199,9 +189,7 @@
 </head>
 <body>
 
-    <!-- Ambient Blobs and Particles -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
+    <!-- Background Particles (No glowing blobs anymore, totally clean) -->
     <canvas id="particles"></canvas>
 
     <header class="animate-up">
@@ -264,12 +252,12 @@
             <span class="hero-tag">- MY WORK</span>
             <h2>Featured Projects</h2>
             <div class="projects-grid" id="project-container">
-                <p style="color: var(--text-dim);">Loading projects securely...</p>
+                <p style="color: var(--yellow);">Loading projects from database...</p>
             </div>
         </section>
     </div>
 
-    <!-- New Sleek Diamond Separator -->
+    <!-- New Sleek Diamond Separator (Clean & Professional) -->
     <div class="sleek-separator-container reveal">
         <div class="sleek-line"></div>
         <div class="sleek-diamond"></div>
@@ -365,7 +353,7 @@
         // 1. Hamburger Menu Toggle
         function toggleMenu() { document.getElementById('menuOverlay').classList.toggle('active'); }
 
-        // 2. Background Particles
+        // 2. Clean Background Particles
         const canvas = document.getElementById('particles'); const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth; let height = canvas.height = window.innerHeight;
         const dots = [];
@@ -379,20 +367,20 @@
             }); requestAnimationFrame(drawDots);
         } drawDots();
 
-        // 3. Scroll Reveal Animation Logic
+        // 3. Scroll Reveal Animation Logic (Triggers elements as you scroll down)
         function revealElements() {
             var reveals = document.querySelectorAll('.reveal');
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100; // triggers when 100px visible
+                var elementVisible = 100;
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add('active');
                 }
             }
         }
         window.addEventListener('scroll', revealElements);
-        revealElements(); // Trigger once on load
+        revealElements(); // Trigger once on page load
 
         // 4. Description "See More" Logic
         function toggleDesc(btn) {
@@ -404,13 +392,38 @@
             }
         }
 
-        // 5. Perfect Google Sheets CSV Fetching using PapaParse
+        /* 5. 100% BULLETPROOF CSV PARSER 
+           (No external libraries. Will never crash regardless of newlines or quotes in description) */
+        function parseCSV(str) {
+            const arr = []; let quote = false;
+            for (let row = 0, col = 0, c = 0; c < str.length; c++) {
+                let cc = str[c], nc = str[c+1];
+                arr[row] = arr[row] || []; arr[row][col] = arr[row][col] || '';
+                if (cc == '"' && quote && nc == '"') { arr[row][col] += cc; ++c; continue; }
+                if (cc == '"') { quote = !quote; continue; }
+                if (cc == ',' && !quote) { ++col; continue; }
+                if (cc == '\r' && nc == '\n' && !quote) { ++row; col = 0; ++c; continue; }
+                if (cc == '\n' && !quote) { ++row; col = 0; continue; }
+                if (cc == '\r' && !quote) { ++row; col = 0; continue; }
+                arr[row][col] += cc;
+            }
+            return arr;
+        }
+
         const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1wyJFeCBqOpczOVgx_pghVNJBp1PX4bYv0lRrCYPrVXk/export?format=csv'; 
         
-        Papa.parse(SHEET_CSV_URL, {
-            download: true,
-            complete: function(results) {
-                const rows = results.data.slice(1); // skip header
+        async function loadProjects() {
+            try {
+                const response = await fetch(SHEET_CSV_URL);
+                const data = await response.text();
+                
+                // Security check if sheet is not public
+                if(data.trim().toLowerCase().startsWith("<!doctype html>")) {
+                    document.getElementById('project-container').innerHTML = `<p style="color: #ff4444; font-weight: bold;">Error: Your Google Sheet is restricted. Please go to Share > Change to 'Anyone with the link can view'.</p>`;
+                    return;
+                }
+
+                const rows = parseCSV(data).slice(1); // skip header
                 const container = document.getElementById('project-container');
                 container.innerHTML = '';
                 
@@ -427,7 +440,7 @@
 
                             container.innerHTML += `
                                 <div class="bracket-card project-card" onclick="shiftCard(this)">
-                                    <img src="${photoUrl}" class="project-img" alt="${name}" onerror="this.src='https://via.placeholder.com/400x300?text=Image'">
+                                    <img src="${photoUrl}" class="project-img" alt="${name}" onerror="this.src='https://via.placeholder.com/400x300?text=Invalid Image Link'">
                                     <h4>${name}</h4>
                                     <div>
                                         <p class="desc-text">${formattedDesc}</p>
@@ -439,11 +452,11 @@
                         }
                     }
                 });
-            },
-            error: function() {
-                document.getElementById('project-container').innerHTML = `<p style="color: var(--text-dim);">Unable to load projects right now.</p>`;
+            } catch (error) {
+                document.getElementById('project-container').innerHTML = `<p style="color: #ff4444;">Connection failed. Check your internet or Sheet URL.</p>`;
             }
-        });
+        }
+        loadProjects();
 
         // 6. Shift Animation on Click
         function shiftCard(card) {
@@ -455,7 +468,7 @@
         // 7. Infinite Reviews Duplication
         const track = document.getElementById('marqueeTrack'); track.innerHTML += track.innerHTML;
 
-        // 8. Discord Stats with Scroll Intersection Observer Trigger
+        // 8. Discord Stats - TRIGGERED ONLY ON SCROLL
         const DISCORD_INVITE_CODE = 'KZZPua7DE2'; 
         let lastOnline = 1; let lastTotal = 1;
 
@@ -491,19 +504,18 @@
             } catch (err) { console.log(err); }
         }
 
-        // Intersection Observer: Start counting ONLY when the user scrolls down to the Discord Section
+        // Intersection Observer: Only fires the 1 to Real Number animation when scrolled down to the Discord card!
         let hasAnimatedStats = false;
         const statsObserver = new IntersectionObserver((entries) => {
             if(entries[0].isIntersecting && !hasAnimatedStats) {
-                syncDiscordStats(true); // Fire animation from 1
+                syncDiscordStats(true); // Count starts from 1!
                 hasAnimatedStats = true;
-                // Then keep syncing quietly every 10s
-                setInterval(() => syncDiscordStats(false), 10000);
+                setInterval(() => syncDiscordStats(false), 10000); // 10s auto sync starts
             }
-        }, { threshold: 0.3 }); // Trigger when 30% of the section is visible
+        }, { threshold: 0.3 }); 
         
         statsObserver.observe(document.getElementById('community'));
 
     </script>
 </body>
-                                                                                                             </html>
+                                                                                </html>
