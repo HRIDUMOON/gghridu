@@ -102,19 +102,32 @@
         .about-text h3 { font-size: 2.2rem; margin-bottom: 15px; }
         .about-text p { color: var(--text-dim); line-height: 1.7; margin-bottom: 15px; font-size: 1rem; font-weight: 300; }
 
-        /* Bracket Card Style for Projects */
+        /* Bracket Card Style for Projects (Fixed animation offset to be subtle) */
         .bracket-card { position: relative; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 25px; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s; cursor: pointer; }
         .bracket-card::before { content: ''; position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-top: 2px solid var(--yellow); border-left: 2px solid var(--yellow); border-top-left-radius: 14px; }
         .bracket-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-bottom: 2px solid var(--yellow); border-right: 2px solid var(--yellow); border-bottom-right-radius: 14px; }
         .bracket-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .bracket-card.shift-right { transform: translateX(20px) scale(1.02); }
-        .bracket-card.shift-left { transform: translateX(-20px) scale(1.02); }
+        .bracket-card.shift-right { transform: translateX(8px) scale(1.01); } /* Reduced shifting movement */
+        .bracket-card.shift-left { transform: translateX(-8px) scale(1.01); } /* Reduced shifting movement */
 
         /* Dynamic Projects Section */
         .projects-section { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
         .projects-section h2 { font-size: 2.5rem; margin-bottom: 35px; }
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .project-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; border: 1px solid #222; }
+        
+        /* Fixed Image Size & Aspect Ratio Rules */
+        .project-img { 
+            width: 100%; 
+            height: 220px; 
+            object-fit: cover; /* Ensures any aspect ratio fills the box perfectly without stretching */
+            object-position: center; 
+            border-radius: 10px; 
+            margin-bottom: 20px; 
+            border: 1px solid #222; 
+            background-color: #111; /* Shows neat dark background while loading */
+            display: block;
+        }
+        
         .project-card h4 { font-size: 1.5rem; margin-bottom: 10px; color: var(--yellow); }
         
         .desc-text { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; margin-bottom: 8px; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; transition: all 0.3s ease; }
@@ -189,7 +202,7 @@
 </head>
 <body>
 
-    <!-- Background Particles (No glowing blobs anymore, totally clean) -->
+    <!-- Background Particles (Clean background) -->
     <canvas id="particles"></canvas>
 
     <header class="animate-up">
@@ -257,7 +270,7 @@
         </section>
     </div>
 
-    <!-- New Sleek Diamond Separator (Clean & Professional) -->
+    <!-- Sleek Diamond Separator -->
     <div class="sleek-separator-container reveal">
         <div class="sleek-line"></div>
         <div class="sleek-diamond"></div>
@@ -392,8 +405,7 @@
             }
         }
 
-        /* 5. 100% BULLETPROOF CSV PARSER 
-           (No external libraries. Will never crash regardless of newlines or quotes in description) */
+        /* 5. 100% BULLETPROOF CSV PARSER */
         function parseCSV(str) {
             const arr = []; let quote = false;
             for (let row = 0, col = 0, c = 0; c < str.length; c++) {
@@ -417,13 +429,12 @@
                 const response = await fetch(SHEET_CSV_URL);
                 const data = await response.text();
                 
-                // Security check if sheet is not public
                 if(data.trim().toLowerCase().startsWith("<!doctype html>")) {
                     document.getElementById('project-container').innerHTML = `<p style="color: #ff4444; font-weight: bold;">Error: Your Google Sheet is restricted. Please go to Share > Change to 'Anyone with the link can view'.</p>`;
                     return;
                 }
 
-                const rows = parseCSV(data).slice(1); // skip header
+                const rows = parseCSV(data).slice(1);
                 const container = document.getElementById('project-container');
                 container.innerHTML = '';
                 
@@ -440,7 +451,7 @@
 
                             container.innerHTML += `
                                 <div class="bracket-card project-card" onclick="shiftCard(this)">
-                                    <img src="${photoUrl}" class="project-img" alt="${name}" onerror="this.src='https://via.placeholder.com/400x300?text=Invalid Image Link'">
+                                    <img src="${photoUrl}" class="project-img" alt="${name}" onerror="this.src='https://via.placeholder.com/400x300?text=Invalid+Image+Link'">
                                     <h4>${name}</h4>
                                     <div>
                                         <p class="desc-text">${formattedDesc}</p>
@@ -458,7 +469,7 @@
         }
         loadProjects();
 
-        // 6. Shift Animation on Click
+        // 6. Shift Animation on Click (Subtle fixed offset)
         function shiftCard(card) {
             if(card.classList.contains('shift-right')) { card.classList.remove('shift-right'); card.classList.add('shift-left'); }
             else if(card.classList.contains('shift-left')) { card.classList.remove('shift-left'); }
@@ -518,4 +529,4 @@
 
     </script>
 </body>
-                                                                                </html>
+                                                                  </html>
